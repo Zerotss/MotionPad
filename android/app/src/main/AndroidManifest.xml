@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false"/>
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false"/>
+    <queries><package android:name="org.dolphinemu.dolphinemu"/></queries>
+    <application android:name="es.thormando.motionpad.MainApplication" android:label="MotionPad" android:theme="@style/AppTheme"
+        android:allowBackup="false" android:icon="@drawable/logo" android:enableOnBackInvokedCallback="false">
+        <activity android:name="es.thormando.motionpad.MainActivity" android:exported="true" android:launchMode="singleTop" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode" android:windowSoftInputMode="adjustResize">
+            <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+        </activity>
+        <service android:name="es.thormando.unificado.platform.ConsoleService" android:exported="false" android:stopWithTask="true" android:foregroundServiceType="connectedDevice"/>
+    </application>
+</manifest>
