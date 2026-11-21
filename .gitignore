@@ -1,0 +1,16 @@
+node_modules/
+.gradle/
+.kotlin/
+**/build/
+local.properties
+.idea/
+coverage/
+*.apk
+!/MotionPad.apk
+*.aab
+*.jks
+*.keystore
+*.pem
+*.p12
+.env
+.env.*
