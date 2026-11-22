@@ -1,5 +1,6 @@
-# Compilación y pruebas
-Utiliza Node 20 o 22, JDK 17 o 21, Android SDK 35 y Build Tools 35.0.0. Desde la carpeta del proyecto:
+# Build and test
+
+Use Node 20 or 22, JDK 17 or 21, Android SDK 35 and Build Tools 35.0.0. From the project directory:
 
 ```sh
 npm ci
@@ -9,4 +10,4 @@ cd android
 ./gradlew :app:testReleaseUnitTest :app:assembleRelease
 ```
 
-La tarea bundleJs integra el paquete de Metro y los recursos en el APK. La compilación release del proyecto queda sin firmar. El instalador distribuido está firmado y puede arrancar sin servidor de desarrollo.
+The `bundleJs` task includes the Metro bundle and assets in the APK. The project's release build is unsigned. The distributed installer is signed and can run without a development server.
