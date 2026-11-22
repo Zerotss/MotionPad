@@ -1,17 +1,17 @@
-# Revisión previa a la publicación de MotionPad
+# MotionPad pre-release security review
 
-Para pruebas internas, usar una red local de confianza.
+Use a trusted local network for internal testing.
 
-| Prioridad | Evidencia en el proyecto | Impacto y cambio recomendado |
+| Priority | Evidence in the project | Impact and recommended change |
 | --- | --- | --- |
-| Alta en redes compartidas | Handset.kt difunde el código durante el descubrimiento y acepta el mismo valor como respuesta. Settings.kt conserva ese código sin caducidad. Router.kt asocia el jugador a una IP y comprueba CRC32. | Otro equipo en la red puede conocer el código y suplantar un extremo. Los datos de movimiento y botones viajan en claro y faltan autenticación de cada mensaje y protección contra repeticiones. Usar descubrimiento sin secretos, emparejamiento autenticado y un canal cifrado con protección contra repetición entre teléfono y consola. Mantener DSU local para Dolphin. |
-| Media, requiere otra app en el dispositivo | La actividad principal es pública. MotionPadPackage.kt acepta una indicación de modo consola del intent de apertura o reanudación y puede iniciar el servicio. | Una app local podría activar el receptor sin que el usuario elija consola. Reservar el cambio de modo para la interfaz propia y usar una ruta privada para reabrir desde la notificación. |
-| Baja, local | Router.kt mantiene suscripciones DSU por dirección y puerto con caducidad de seis segundos, sin límite de suscripciones simultáneas. | Otro proceso local podría elevar el consumo de memoria y CPU. Limitar las suscripciones y mantener la caducidad. |
+| High on shared networks | Handset.kt broadcasts the code during discovery and accepts the same value as a response. Settings.kt stores that code without expiration. Router.kt associates the player with an IP address and checks CRC32. | Another device on the network can learn the code and impersonate an endpoint. Motion and button data are sent in plaintext, without per-message authentication or replay protection. Use discovery without secrets, authenticated pairing and an encrypted channel with replay protection between the phone and console. Keep DSU local for Dolphin. |
+| Medium, requires another app on the device | The main activity is exported. MotionPadPackage.kt accepts a console-mode flag from the launch or resume intent and can start the service. | A local app could activate the receiver without the user choosing Console. Restrict mode changes to the app's own interface and use a private route to reopen it from the notification. |
+| Low, local | Router.kt tracks DSU subscriptions by address and port with a six-second expiration, without a limit on simultaneous subscriptions. | Another local process could increase memory and CPU usage. Limit subscriptions and retain expiration. |
 
-## Dependencias
+## Dependencies
 
-React Native 0.76.9 está fuera de soporte. npm audit del archivo de bloqueo contabilizó 15 entradas, una alta, ocho moderadas y seis bajas, incluidas las propagadas a paquetes dependientes. La alta corresponde a image-size 1.2.1 usado por Metro. El hallazgo afecta al procesamiento de imágenes durante el empaquetado. Actualizar la herramienta y comprobar la compatibilidad. Repetir también la revisión de las dependencias Android antes de publicar.
+At the time of this review, React Native 0.76.9 was out of support. Running `npm audit` against the lockfile reported 15 entries: one high, eight moderate and six low, including findings propagated to dependent packages. The high-severity finding concerns image-size 1.2.1, used by Metro. It affects image processing during bundling. Update the tooling and check compatibility. Also repeat the Android dependency review before publishing.
 
-## Alcance
+## Scope
 
-Revisión estática del código React Native y Kotlin, manifiesto de release, firma y dependencias npm. Se ejecutaron el tipado, las dos pruebas JavaScript y las siete pruebas Kotlin, incluidas las de UDP local. Quedan pendientes pruebas en dispositivos físicos y una auditoría de las dependencias nativas. El material de firma privado debe permanecer fuera del repositorio público.
+This review covered static analysis of the React Native and Kotlin code, the release manifest, signing and npm dependencies. Type checking, both JavaScript tests and all seven Kotlin tests were run, including the local UDP tests. Physical-device testing and an audit of native dependencies remain pending. Private signing material must stay out of the public repository.

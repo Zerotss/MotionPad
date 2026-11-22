@@ -42,9 +42,12 @@ I built **MotionPad** to make that routine as close to plug-and-play as I could.
   <img src="docs/screenshots/controller.png" width="215" alt="Phone controller with D-pad and motion controls" />
   <img src="docs/screenshots/console.png" width="215" alt="Console receiver with pairing code and Dolphin setup" />
   <img src="docs/screenshots/pairing.png" width="215" alt="Phone pairing and player selection" />
+  <img src="docs/screenshots/device-role.png" width="215" alt="Device role selection for Console or Phone" />
 </p>
 
-[Landscape controller and all five emulator screenshots](docs/screenshots/)
+<p>
+  <img src="docs/screenshots/controller-landscape.png" width="660" alt="Phone controller in landscape orientation" />
+</p>
 
 ## Video Demo
 
@@ -54,7 +57,7 @@ I built **MotionPad** to make that routine as close to plug-and-play as I could.
 
 1. Install [**MotionPad.apk**](MotionPad.apk?raw=true) on the handheld and each phone. Connect them to the same trusted Wi-Fi network.
 2. Choose **Console** on the handheld. Choose **Phone** on each controller, enter the six-digit console code and select a different player on each phone.
-3. Open Dolphin once, then close it. On the handheld, tap **Link with Dolphin**, select **Dolphin Emulator → Config**, then tap **Open Dolphin** and launch a Wii game.
+3. If you’ve never opened Dolphin on your handheld, open it once and then close it. In MotionPad on the handheld, tap **Link with Dolphin** and select **Dolphin Emulator → Config**. Your paired phones are now linked as Wii Remotes, and you’re good to go.
 
 For later sessions, open MotionPad on each device. Run Dolphin setup again if you change which player slots you want enabled.
 
