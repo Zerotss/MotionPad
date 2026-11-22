@@ -9,6 +9,7 @@
 5. [Screenshots](#screenshots)
 6. [Video Demo](#video-demo)
 7. [How to Run](#how-to-run)
+8. [Troubleshooting](#troubleshooting)
 
 ## Introduction
 
@@ -56,5 +57,22 @@ I built **MotionPad** to make that routine as close to plug-and-play as I could.
 3. Open Dolphin once, then close it. On the handheld, tap **Link with Dolphin**, select **Dolphin Emulator → Config**, then tap **Open Dolphin** and launch a Wii game.
 
 For later sessions, open MotionPad on each device. Run Dolphin setup again if you change which player slots you want enabled.
+
+## Troubleshooting
+
+### The phone locks when I turn Freeze off
+
+If leaving Freeze brings up the phone's lock screen and asks for a PIN, pattern, password or fingerprint, this can be caused by an **Android screen pinning setting**. Leaving Freeze releases screen pinning, and Android may lock the device when an app is unpinned. This is separate from the app becoming unresponsive.
+
+To prevent this while keeping the current Freeze behavior:
+
+1. Open the phone's **Settings** and search for **App pinning** or **Screen pinning** (usually under **Security** or **Security & privacy**).
+2. Keep screen pinning enabled.
+3. If available, turn off **Lock device when unpinning** or **Ask for PIN before unpinning**. The name and availability depend on the phone manufacturer and Android version.
+4. Return to MotionPad, enable Freeze, then hold Exit for one second to check the result.
+
+This changes the authentication requirement when unpinning an app; you do not need to remove the phone's normal screen lock. MotionPad cannot override this Android security setting. If your phone does not offer the option, Android may continue to require unlocking after leaving Freeze.
+
+See the manufacturer's [screen pinning instructions](https://help.motorola.com/hc/7132/14/global/en-us/CGT1410105001.html) for an example of this setting.
 
 [Build from source](docs/BUILD.md) · [Network security notes](SECURITY-REVIEW.md)
